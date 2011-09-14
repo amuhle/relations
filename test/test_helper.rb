@@ -2,10 +2,11 @@ ENV["RAILS_ENV"] = "test"
 
 $:.unshift File.dirname(__FILE__)
 
-#require "rails_app/config/environment"
+require "test_app/config/environment"
 require "rails/test_help"
+require "orm/active_record"
 
 # For generators
-#require "rails/generators/test_case"
-#require "generators/devise/install_generator"
-#require "generators/devise/views_generator"
+require "rails/generators/test_case"
+require "generators/relation/relation_generator"
+
