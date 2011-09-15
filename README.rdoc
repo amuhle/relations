@@ -14,14 +14,20 @@ You can use relations gem with any rails version major to 3.0.0:
 After you install Relations and add it to your Gemfile, you could use it in the following way:
 
 	rails generate relation model_one relation_type model_two
-	
+
+
 ** Both models should be created before you can generate the relation.
+
 ** Both model's names should be in the singular form.
 
-Sopported Relations types: 
+- Sopported Relations types:
+ 
 	- has_many
+	
 	- belongs_to
+	
 	- has_one
+	
 	- has_and_belongs_to_many
  
 For instance: 
@@ -30,8 +36,10 @@ For instance:
 	
 	It should: 
 		- generate a migration "db/migration/***_relate_users_to_tasks.rb"
+		
 		- add "has_many :tasks" line to app/models/user.rb
-		- add "belongs_to :user" line to app/models/task.rb	
+		
+		- add "belongs_to :user" line to app/models/task.rb		
 
 === Maintainers
 
