@@ -7,7 +7,7 @@ module Relation
         class RelationGenerator < Rails::Generators::Base
             include Rails::Generators::Migration
             include Relation::Generators::OrmHelpers
-            
+
             attr_accessor :table_name, :fk
 
             source_root File.expand_path('../templates', __FILE__)
@@ -23,14 +23,14 @@ module Relation
             }
 
             def inject_relation
-                model_contents = get_model_content(relation_type.to_sym,model_two)
+                model_contents = get_model_content(relation_type.to_sym, model_two)
                 inject_into_class(model_path(model_one), model_one.to_s.capitalize, model_contents) if model_exists?(model_one)
             end
 
             def inject_opposite_relation
-                model_contents = get_model_content(@@opposite_relations[relation_type.to_sym],model_one)
+                model_contents = get_model_content(@@opposite_relations[relation_type.to_sym], model_one)
                 inject_into_class(model_path(model_two), model_two.to_s.capitalize, model_contents) if model_exists?(model_two)
-            end        
+            end
 
             def self.next_migration_number(dirname)
                 migration_number = Time.now.strftime("%Y%m%d%H%M%S").to_i
@@ -48,25 +48,23 @@ module Relation
                 end
             end
 
-            private
-                def get_model_content(rel,entity)
-                    
-                    relations = {
-                        :belongs_to => "  #{rel} :#{entity}\n",
-                        :has_one => "  #{rel} :#{entity}\n",
-                        :has_many => "  #{rel} :#{entity.pluralize}\n",
-                        :has_and_belongs_to_many => "  #{rel} :#{entity.pluralize}\n"
-                    }
-                    if rel == :belongs_to
-                        self.table_name = model_one == entity ? model_two.pluralize : model_one.pluralize
-                        self.fk = entity + '_id'
-                    elsif rel == :has_and_belongs_to_many
-                        self.table_name = model_one.to_s.pluralize + '_' + model_two.to_s.pluralize
-                        self.fk = ''
-                    end
-                    relations[rel]
-                end        
-
+        private
+            def get_model_content(rel,entity)
+                relations = {
+                    :belongs_to => "  #{rel} :#{entity}\n",
+                    :has_one => "  #{rel} :#{entity}\n",
+                    :has_many => "  #{rel} :#{entity.pluralize}\n",
+                    :has_and_belongs_to_many => "  #{rel} :#{entity.pluralize}\n"
+                }
+                if rel == :belongs_to
+                    self.table_name = model_one == entity ? model_two.pluralize : model_one.pluralize
+                    self.fk = entity + '_id'
+                elsif rel == :has_and_belongs_to_many
+                    self.table_name = model_one.to_s.pluralize + '_' + model_two.to_s.pluralize
+                    self.fk = ''
+                end
+                relations[rel]
+            end
         end
     end
 end
