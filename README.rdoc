@@ -5,7 +5,7 @@ With a simple command you can generate the migration and add the associations to
 
 == Installation
 
-You can use relations gem with any rails version major to 3.0 and minor to 3.1:
+You can use relations gem with any rails version major to 3.0:
 
 	gem install relations
 
