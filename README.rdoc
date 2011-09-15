@@ -1,0 +1,43 @@
+== Relations
+
+Relations is a gem to generate associations between models in a Rails application. 
+With a simple command you can generate the migration and add the associations to the models involved.
+
+== Installation
+
+You can use relations gem with any rails version major to 3.0.0:
+
+	gem install relations
+
+== Usage 
+
+After you install Relations and add it to your Gemfile, you could use it in the following way:
+
+	rails generate relation model_one relation_type model_two
+	
+** Both models should be created before you can generate the relation.
+** Both model's names should be in the singular form.
+
+Sopported Relations types: 
+	- has_many
+	- belongs_to
+	- has_one
+	- has_and_belongs_to_many
+ 
+For instance: 
+
+	rails g relation user has_many task
+	
+	It should: 
+		- generate a migration "db/migration/***_relate_users_to_tasks.rb"
+		- add "has_many :tasks" line to app/models/user.rb
+		- add "belongs_to :user" line to app/models/task.rb	
+
+=== Maintainers
+
+* Alvaro Muhlethaler (http://github.com/vairix-amuhlethaler)
+* Sebastián Sierra (http://github.com/vairix-ssierra)
+
+== License
+
+MIT License. Copyright 2011 VAIRIX Software Development. http://www.vairix.com
