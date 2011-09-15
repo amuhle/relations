@@ -10,7 +10,19 @@ module Relation
 
             attr_accessor :table_name, :fk
 
-            source_root File.expand_path('../templates', __FILE__)
+            # Returns true if Rails version is bigger than 3.0.x
+			def self.is_rails_bigger_than_3_0?
+				Rails::VERSION::STRING[0,3] != "3.0"
+			end
+
+            def	self.template_path
+				rails_version = is_rails_bigger_than_3_0? ? '/new' : ''
+				File.expand_path("../templates#{rails_version}", __FILE__)
+			end
+
+            source_root template_path
+
+            File.expand_path('../templates', __FILE__)
             argument :model_one, :type => :string
             argument :relation_type, :type => :string
             argument :model_two, :type => :string
@@ -65,6 +77,7 @@ module Relation
                 end
                 relations[rel]
             end
+
         end
     end
 end
