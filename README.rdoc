@@ -7,7 +7,7 @@ With a simple command you can generate the migration and add the associations to
 
 You can use relations gem with any rails version major to 3.0:
 
-	gem install relations
+ gem install relations
 
 == Usage 
 
@@ -24,26 +24,24 @@ After you install Relations and add it to your Gemfile, you could use it in the 
 
 * Sopported Relations types:
  
-	* has_many
-
-	* belongs_to
-
-	* has_one
-
-	* has_and_belongs_to_many
+ * has_many
+ * belongs_to
+ * has_one
+ * has_and_belongs_to_many
 
 For instance: 
 
-	rails g relation user has_many task
+ rails g relation user has_many task
 
-It should: 
-		* generate a migration "db/migration/***_relate_users_to_tasks.rb"
+It should:
 
-		* add "has_many :tasks" line to app/models/user.rb
+	* generate a migration "db/migration/***_relate_users_to_tasks.rb"
 
-		* add "belongs_to :user" line to app/models/task.rb
+	* add "has_many :tasks" line to app/models/user.rb
 
-=== Maintainers
+	* add "belongs_to :user" line to app/models/task.rb
+
+== Maintainers
 
 * Alvaro Muhlethaler (http://github.com/vairix-amuhlethaler)
 * Sebastián Sierra (http://github.com/vairix-ssierra)
