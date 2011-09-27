@@ -13,7 +13,7 @@ You can use relations gem with any rails version major to 3.0:
 
 After you install Relations and add it to your Gemfile, you could use it in the following way:
 
-	rails generate relation model_one relation_type model_two
+ rails generate relation model_one relation_type model_two
 
 
 * Both models should be created before you can generate the relation.
@@ -24,10 +24,10 @@ After you install Relations and add it to your Gemfile, you could use it in the 
 
 * Sopported Relations types:
  
- * has_many
- * belongs_to
- * has_one
- * has_and_belongs_to_many
+ has_many
+ belongs_to
+ has_one
+ has_and_belongs_to_many
 
 For instance: 
 
