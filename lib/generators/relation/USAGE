@@ -1,8 +1,8 @@
 Description:
-    Explain the generator
+  Explain the generator
 
 Example:
-    rails generate relation Thing
+  rails generate relation Thing
 
-    This will create:
-        what/will/it/create
+  This will create:
+    what/will/it/create
