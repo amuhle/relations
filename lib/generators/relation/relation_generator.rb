@@ -28,10 +28,10 @@ module Relation
 		  argument :model_two, :type => :string
 
 		  @@opposite_relations = {
-		      :belongs_to => :has_many,
-		      :has_one => :belongs_to,
-		      :has_many => :belongs_to,
-		      :has_and_belongs_to_many => :has_and_belongs_to_many
+	      :belongs_to => :has_many,
+	      :has_one => :belongs_to,
+	      :has_many => :belongs_to,
+	      :has_and_belongs_to_many => :has_and_belongs_to_many
 		  }
 
 		  def inject_relation
@@ -62,28 +62,28 @@ module Relation
 
 private
 
-def get_model_content(rel,entity)
+			def get_model_content(rel,entity)
 
-	relations = {
-	  :belongs_to 							=> "  #{rel} :#{entity}\n",
-	  :has_one 									=> "  #{rel} :#{entity}\n",
-	  :has_many 								=> "  #{rel} :#{entity.pluralize}\n",
-	  :has_and_belongs_to_many 	=> "  #{rel} :#{entity.pluralize}\n"
-	}
+				relations = {
+					:belongs_to 							=> "  #{rel} :#{entity}\n",
+					:has_one 									=> "  #{rel} :#{entity}\n",
+					:has_many 								=> "  #{rel} :#{entity.pluralize}\n",
+					:has_and_belongs_to_many 	=> "  #{rel} :#{entity.pluralize}\n"
+				}
 	
-	if rel == :belongs_to
-	  self.table_name = model_one == entity ? model_two.pluralize : model_one.pluralize
-	  self.fk = entity + '_id'
-	elsif rel == :has_and_belongs_to_many
-	  self.table_name = model_one.to_s.pluralize + '_' + model_two.to_s.pluralize
-	  self.fk = ''
-	end
+				if rel == :belongs_to
+					self.table_name = model_one == entity ? model_two.pluralize : model_one.pluralize
+					self.fk = entity + '_id'
+				elsif rel == :has_and_belongs_to_many
+					self.table_name = model_one.to_s.pluralize + '_' + model_two.to_s.pluralize
+					self.fk = ''
+				end
 	
-	relations[rel]
+				relations[rel]
 	
-end
+			end
 
-	end
+		end
   end
 end
 
